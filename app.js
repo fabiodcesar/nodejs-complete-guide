@@ -15,6 +15,8 @@ const server = http.createServer((req, res) => {
     const url = req.url;
     const method = req.method;
 
+    console.log('url=' + url);
+
     //TODO: Ressearch about tripple equal
     if (url === '/') {
         res.write('<html>');
@@ -44,11 +46,10 @@ const server = http.createServer((req, res) => {
             const message = parsedBody.split('=')[1];
             console.log(parsedBody);
             fs.writeFileSync('message.txt', message);
-        });
-
-        res.statusCode = 302;
-        res.setHeader('Location', '/');
-        return res.end();
+            res.statusCode = 302;
+            res.setHeader('Location', '/');
+            return res.end();    
+        });        
     }
 
     res.setHeader('Content-Type', 'text/html');
