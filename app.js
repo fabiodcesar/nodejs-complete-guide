@@ -1,6 +1,9 @@
 //Instanciate a http module
 const http = require('http');
 
+//FS allows to work with files
+const fs = require('fs');
+
 // Another way to pass rqListener using a more classic approach
 // function rqListener (req, res) {
 // }
@@ -10,6 +13,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
 
     const url = req.url;
+    const method = req.method;
 
     //TODO: Ressearch about tripple equal
     if (url === '/') {
@@ -24,9 +28,14 @@ const server = http.createServer((req, res) => {
         res.write('</html>');
         return res.end();
     }
-
-    //Outputs main request details
-    //console.log(req.url, req.method, req.headers);
+    
+    if (url === '/message' && method === 'POST')
+    {
+        fs.writeFileSync('message.txt', 'DUMMY');
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
+        return rs.end();
+    }
 
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
