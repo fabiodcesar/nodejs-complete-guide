@@ -8,9 +8,33 @@ const http = require('http');
 
 //Creates the server
 const server = http.createServer((req, res) => {
-    console.log(req.url, req.method, req.headers);
+
+    const url = req.url;
+
+    //TODO: Ressearch about tripple equal
+    if (url === '/') {
+        res.write('<html>');
+        res.write('<head><title>Enter message</title></head>');
+        res.write('<body>');
+        res.write('<form action="/message" method="POST">');
+        res.write('<input type="text" name="message"></input>');
+        res.write('<button type="submit">Send</button>');
+        res.write('</form>');
+        res.write('</body>');
+        res.write('</html>');
+        return res.end();
+    }
+
+    //Outputs main request details
+    //console.log(req.url, req.method, req.headers);
+
     res.setHeader('Content-Type', 'text/html');
-    res.write('<html><head><title>Hello</title></head><body><h1>Hello</h1> Hello world from my Node.js Server!</body></html>');
+    res.write('<html>');
+    res.write('<head><title>My first page</title></head>');
+    res.write('<body>');
+    res.write('Hello world from my Node.js Server!');
+    res.write('</body>');
+    res.write('</html>');
     res.end();
 });
 
