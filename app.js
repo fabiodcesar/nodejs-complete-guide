@@ -28,13 +28,27 @@ const server = http.createServer((req, res) => {
         res.write('</html>');
         return res.end();
     }
-    
-    if (url === '/message' && method === 'POST')
-    {
-        fs.writeFileSync('message.txt', 'DUMMY');
+
+    if (url === '/message' && method === 'POST') {
+        const body = [];
+
+        //Listen for the data event, the data event will be fired whenever a new chunk is ready
+        req.on('data', (chunk) => {
+            console.log(chunk);
+            body.push(chunk);
+        });
+
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            console.log(parsedBody);
+            const message = parsedBody.split('=')[1];
+            console.log(parsedBody);
+            fs.writeFileSync('message.txt', message);
+        });
+
         res.statusCode = 302;
         res.setHeader('Location', '/');
-        return rs.end();
+        return res.end();
     }
 
     res.setHeader('Content-Type', 'text/html');
