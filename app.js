@@ -45,11 +45,14 @@ const server = http.createServer((req, res) => {
             console.log(parsedBody);
             const message = parsedBody.split('=')[1];
             console.log(parsedBody);
-            fs.writeFileSync('message.txt', message);
-            res.statusCode = 302;
-            res.setHeader('Location', '/');
-            return res.end();    
-        });        
+
+            fs.writeFile('message.txt', message, (err) => {
+                res.statusCode = 302;
+                res.setHeader('Location', '/');
+                return res.end();
+            });
+
+        });
     }
 
     res.setHeader('Content-Type', 'text/html');
