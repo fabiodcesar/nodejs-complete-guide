@@ -1,6 +1,5 @@
 //FS allows to work with files
 const fs = require('fs');
-const { builtinModules } = require('module');
 
 const requestHandler = (req, res) => {
 
@@ -52,7 +51,13 @@ const requestHandler = (req, res) => {
     res.write('Hello world from my Node.js Server!');
     res.write('</body>');
     res.write('</html>');
-    return res.end();
+    res.end();
 };
 
-module.exports = requestHandler;
+// module.exports = {
+//     handler: requestHandler,
+//     someText: 'Some hardcoded code'
+// };
+
+exports.handler = requestHandler;
+//exports.someText= 'Some hardcoded text';
