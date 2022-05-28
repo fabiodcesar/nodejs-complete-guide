@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/fabiodcesar/nodejs-complete-guide/issues"
   },
-  "homepage": "https://github.com/fabiodcesar/nodejs-complete-guide#readme"  
+  "homepage": "https://github.com/fabiodcesar/nodejs-complete-guide#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
