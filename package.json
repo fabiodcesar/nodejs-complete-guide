@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-complete-guide",
+  "version": "1.0.0",
+  "description": "Complete Node.js Guid",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiodcesar/nodejs-complete-guide.git"
+  },
+  "author": "Fábio Dias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabiodcesar/nodejs-complete-guide/issues"
+  },
+  "homepage": "https://github.com/fabiodcesar/nodejs-complete-guide#readme"  
+}
